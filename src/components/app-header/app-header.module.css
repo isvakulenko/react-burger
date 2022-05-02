@@ -1,0 +1,30 @@
+.header {
+  background: #1c1c21;
+  box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04),
+    0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
+    0px 0px 1px rgba(0, 0, 0, 0.04);
+}
+
+.nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.wrap {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0); 
+}
+.button {
+  display: flex;
+  align-items: center;
+}
