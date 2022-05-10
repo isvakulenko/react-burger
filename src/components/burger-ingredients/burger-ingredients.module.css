@@ -1,0 +1,14 @@
+.content{
+display: flex;
+flex-direction: column;
+overflow-y: scroll;
+height: 400px;
+width: 600px;
+}
+.type {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+width: 100%;
+gap: 24px;
+}

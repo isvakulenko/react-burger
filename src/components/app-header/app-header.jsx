@@ -6,28 +6,28 @@ import {
   ListIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
-import style from "./app-header.module.css";
+import styles from "./app-header.module.css";
 
 const AppHeader = () => {
   return (
-    <header className={`${style.header} mr-10 ml-10 mt-10 p-4`}>
-      <nav className={style.nav}>
-        <div className={style.wrap}>
-          <a className={`${style.button} pt-4 pb-4 pl-5 pr-5`}>
+    <header className={`${styles.header} mr-10 ml-10 mt-10 p-4`}>
+      <nav className={styles.nav}>
+        <div className={styles.wrap}>
+          <a href="#" className={`${styles.button} pt-4 pb-4 pl-5 pr-5`}>
             <BurgerIcon type="primary" />
             <p className="text text_type_main-default ml-2">Конструктор</p>
           </a>
-          <a className={`${style.button} pt-4 pb-4 pl-5 pr-5 ml-2`}>
+          <a href="#" className={`${styles.button} pt-4 pb-4 pl-5 pr-5 ml-2`}>
             <ListIcon type="primary" />
-            <p className="text text_type_main-default ml-2">Лента заказов</p>
+            <p className="text text_type_main-default text_color_inactive ml-2">Лента заказов</p>
           </a>
         </div>
-        <div className={style.logo}>
+        <div className={styles.logo}>
           <Logo />
         </div>
-        <a className={`${style.button} pt-4 pb-4 pl-5 pr-5`}>
+        <a href="#" className={`${styles.button} pt-4 pb-4 pl-5 pr-5`}>
           <ProfileIcon type="primary" />
-          <p className="text text_type_main-default ml-2">Личный Кабинет</p>
+          <p className="text text_type_main-default text_color_inactive ml-2">Личный Кабинет</p>
         </a>
       </nav>
     </header>
