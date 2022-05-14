@@ -1,14 +1,13 @@
-.content{
-display: flex;
-flex-direction: column;
-overflow-y: scroll;
-height: 400px;
-width: 600px;
+.menu {
+  height: 950px;
+  width: 600px;
+}
+.content {
+  overflow-y: scroll;
+  max-height: 750px;
 }
 .type {
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-width: 100%;
-gap: 24px;
+  overflow-x: hidden;
+  width: 100%;
+  gap: 24px;
 }

@@ -1,62 +1,85 @@
 import React from "react";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
+import PropTypes from "prop-types";
+import { IngredientPropTypes } from "../../utils/prop-types";
 import IngredientsType from "../ingredients-type/ingredients-type";
 import styles from "./burger-ingredients.module.css";
+import Modal from "../modal/modal";
+import IngredientInfo from "../ingredient-info/ingredient-info";
 
 const BurgerIngredients = ({ ingredients }) => {
-  const [current, setCurrent] = React.useState("Булки");
+  const [current, setCurrent] = React.useState("bun");
+
+  // Cтейт для модалки с деталями ингредиента
+  const [ingredientInModal, setIngredientInModal] = React.useState(null);
+
+  const closeIngredientModal = () => setIngredientInModal(null);
+
   const onTabClick = (type) => {
     setCurrent(type);
+    const tabElement = document.getElementById(type);
+    tabElement.scrollIntoView({ behavior: "smooth" });
   };
-// Получим массивы для дальнейшей подстановки в IngredientsType
-  const buns = ingredients.filter((item) => item.type === "bun");
-  const sauces = ingredients.filter((item) => item.type === "sauce");
-  const mains = ingredients.filter((item) => item.type === "main");
+  // Получим массивы для дальнейшей подстановки в IngredientsType
+  const bunsArray = ingredients.filter((item) => item.type === "bun");
+  const saucesArray = ingredients.filter((item) => item.type === "sauce");
+  const mainsArray = ingredients.filter((item) => item.type === "main");
 
   return (
-    <section>
+    <section className={styles.menu}>
       <h1 className="mt-10 mb-5 text text_type_main-large">Соберите бургер</h1>
       <div style={{ display: "flex" }}>
-        <Tab value="Булки"
-         active={current === "Булки"} 
-         onClick={onTabClick}>
+        <Tab value="bun" active={current === "bun"} onClick={onTabClick}>
           Булки
         </Tab>
-        <Tab value="Соусы"
-         active={current === "Соусы"}
-         onClick={onTabClick}>
+        <Tab value="sauce" active={current === "sauce"} onClick={onTabClick}>
           Соусы
         </Tab>
-        <Tab
-          value="Начинки"
-          active={current === "Начинки"}
-          onClick={onTabClick}
-        >
+        <Tab value="main" active={current === "main"} onClick={onTabClick}>
           Начинки
         </Tab>
       </div>
 
       <div className={styles.content}>
-        <div className={styles.type}>
-          <IngredientsType title="Булки" titleId="buns" ingredients={buns} />
+        <div id="bun" className={styles.type}>
+          <IngredientsType
+            title="Булки"
+            titleId="buns"
+            ingredients={bunsArray}
+            onIngredientClick={setIngredientInModal}
+          />
         </div>
-        <div className={styles.type}>
+        <div id="sauce" className={styles.type}>
           <IngredientsType
             title="Соусы"
             titleId="sauces"
-            ingredients={sauces}
+            ingredients={saucesArray}
+            onIngredientClick={setIngredientInModal}
           />
         </div>
-        <div className={styles.type}>
+        <div id="main" className={styles.type}>
           <IngredientsType
             title="Начинки"
             titleId="mains"
-            ingredients={mains}
+            ingredients={mainsArray}
+            onIngredientClick={setIngredientInModal}
           />
         </div>
       </div>
+      {/* условия открытия модального окна */}
+      {ingredientInModal && (
+        <Modal onClose={closeIngredientModal}>
+          {/* title={"Детали ингредиента"} */}
+          {/* <IngredientInfo ingredientData={isingredientModalOpened}/> */}
+          <IngredientInfo ingredientData={ingredientInModal} />
+        </Modal>
+      )}
     </section>
   );
+};
+
+BurgerIngredients.propTypes = {
+  ingredients: PropTypes.arrayOf(IngredientPropTypes.isRequired).isRequired,
 };
 
 export default BurgerIngredients;

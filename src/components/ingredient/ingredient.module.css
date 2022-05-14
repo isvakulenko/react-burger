@@ -1,18 +1,23 @@
 .card {
-  display: flex;
+   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; 
   max-width: 272px;
   width: 100%;
+  height: 208px;
   align-content: space-between;
   cursor: pointer;
   position: relative;
 }
 
 .cost {
+  margin: 0 auto;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  width: 100%;
   gap: 9px;
-  align-items: center;
 }
+
+.name {
+  height: 48px;
+ }

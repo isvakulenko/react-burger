@@ -1,13 +1,14 @@
 import React from "react";
 import Ingredient from "../ingredient/ingredient";
 import styles from "./ingredients-type.module.css";
-
+import PropTypes from "prop-types";
+import { IngredientPropTypes } from "../../utils/prop-types";
 
 const IngredientsType = ({
   title,
   titleId,
   ingredients,
-  onIngredientClick
+  onIngredientClick,
 }) => {
   return (
     <>
@@ -21,7 +22,7 @@ const IngredientsType = ({
               ingredientData={ingredient}
               key={ingredient._id}
               count={1}
-              onClick={onIngredientClick} 
+              onClick={onIngredientClick}
             />
           );
         })}
@@ -30,5 +31,4 @@ const IngredientsType = ({
   );
 };
 
-export default IngredientsType
-
+export default IngredientsType;

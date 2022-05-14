@@ -10,7 +10,7 @@ import styles from "./app-header.module.css";
 
 const AppHeader = () => {
   return (
-    <header className={`${styles.header} mr-10 ml-10 mt-10 p-4`}>
+    <header className={`${styles.header} pt-4 pb-4`}>
       <nav className={styles.nav}>
         <div className={styles.wrap}>
           <a href="#" className={`${styles.button} pt-4 pb-4 pl-5 pr-5`}>
@@ -18,16 +18,20 @@ const AppHeader = () => {
             <p className="text text_type_main-default ml-2">Конструктор</p>
           </a>
           <a href="#" className={`${styles.button} pt-4 pb-4 pl-5 pr-5 ml-2`}>
-            <ListIcon type="primary" />
-            <p className="text text_type_main-default text_color_inactive ml-2">Лента заказов</p>
+            <ListIcon type="secondary" />
+            <p className="text text_type_main-default text_color_inactive ml-2">
+              Лента заказов
+            </p>
           </a>
         </div>
         <div className={styles.logo}>
           <Logo />
         </div>
         <a href="#" className={`${styles.button} pt-4 pb-4 pl-5 pr-5`}>
-          <ProfileIcon type="primary" />
-          <p className="text text_type_main-default text_color_inactive ml-2">Личный Кабинет</p>
+          <ProfileIcon type="secondary" />
+          <p className="text text_type_main-default text_color_inactive ml-2">
+            Личный Кабинет
+          </p>
         </a>
       </nav>
     </header>

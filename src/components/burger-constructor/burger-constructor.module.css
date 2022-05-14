@@ -1,0 +1,35 @@
+.menu {
+  height: 850px;
+  width: 600px;
+}
+.content {
+  width: 600px;
+  max-height: 464px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 16px 0;
+}
+.order {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.cost {
+  display: flex;
+  align-items: center;
+}
+.list {
+  margin: 0;
+  padding: 0;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+}
+.item {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}

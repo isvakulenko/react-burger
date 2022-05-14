@@ -1,7 +1,8 @@
 .type {
   display: flex;
-  flex-direction: row;
+  width: 600px;
+  box-sizing: border-box;
   flex-wrap: wrap;
-  width: 100%;
-  gap: 24px;
+  gap: 32px 24px;
+  margin: 0;
 }
