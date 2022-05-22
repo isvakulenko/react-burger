@@ -1,0 +1,16 @@
+.wrap {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+.main {
+  background: rgba(19, 19, 22, 1);
+  margin: 0 auto;
+  max-width: 1920px;
+  height: 1080px;
+  width: 100%;
+  box-sizing: border-box;
+}

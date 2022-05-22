@@ -1,0 +1,13 @@
+.menu {
+  height: 950px;
+  width: 600px;
+}
+.content {
+  overflow-y: scroll;
+  max-height: 750px;
+}
+.type {
+  overflow-x: hidden;
+  width: 100%;
+  gap: 24px;
+}
