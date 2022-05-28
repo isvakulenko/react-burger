@@ -1,4 +1,3 @@
-import React from "react";
 import Ingredient from "../ingredient/ingredient";
 import styles from "./ingredients-type.module.css";
 import PropTypes from "prop-types";
@@ -31,4 +30,10 @@ const IngredientsType = ({
   );
 };
 
+IngredientsType.propTypes = {
+  title: PropTypes.string.isRequired,
+  titleId: PropTypes.string.isRequired,
+  ingredients: PropTypes.arrayOf(IngredientPropTypes.isRequired).isRequired,
+  onIngredientClick: PropTypes.func.isRequired,
+};
 export default IngredientsType;

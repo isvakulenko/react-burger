@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
-import PropTypes from "prop-types";
-import { IngredientPropTypes } from "../../utils/prop-types";
 import IngredientsType from "../ingredients-type/ingredients-type";
 import styles from "./burger-ingredients.module.css";
 import Modal from "../modal/modal";
 import IngredientInfo from "../ingredient-info/ingredient-info";
+import { BurgerIngredientsContext } from "../../contex/burger-ingredients-context";
 
-const BurgerIngredients = ({ ingredients }) => {
+const BurgerIngredients = () => {
+  const ingredients = useContext(BurgerIngredientsContext);
+
+ // Cтейт для вкладки табов
   const [current, setCurrent] = React.useState("bun");
 
   // Cтейт для модалки с деталями ингредиента
-  const [ingredientInModal, setIngredientInModal] = React.useState(null);
+  const [ingredientInModal, setIngredientInModal] = useState(null);
 
   const closeIngredientModal = () => setIngredientInModal(null);
 
@@ -20,6 +22,7 @@ const BurgerIngredients = ({ ingredients }) => {
     const tabElement = document.getElementById(type);
     tabElement.scrollIntoView({ behavior: "smooth" });
   };
+
   // Получим массивы для дальнейшей подстановки в IngredientsType
   const bunsArray = ingredients.filter((item) => item.type === "bun");
   const saucesArray = ingredients.filter((item) => item.type === "sauce");
@@ -69,8 +72,6 @@ const BurgerIngredients = ({ ingredients }) => {
       {/* условия открытия модального окна */}
       {ingredientInModal && (
         <Modal onClose={closeIngredientModal}>
-          {/* title={"Детали ингредиента"} */}
-          {/* <IngredientInfo ingredientData={isingredientModalOpened}/> */}
           <IngredientInfo ingredientData={ingredientInModal} />
         </Modal>
       )}
@@ -78,8 +79,5 @@ const BurgerIngredients = ({ ingredients }) => {
   );
 };
 
-BurgerIngredients.propTypes = {
-  ingredients: PropTypes.arrayOf(IngredientPropTypes.isRequired).isRequired,
-};
 
 export default BurgerIngredients;
