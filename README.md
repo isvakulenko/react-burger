@@ -1,18 +1,18 @@
-# Getting Started with Create React App
+# Stellar Burgers
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Stellar Burgers — приложением космической бургерной создано при помощи [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Доступные скрипты
 
-In the project directory, you can run:
+Находясь в директории проекта, вы можете выполнить следующие команды:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Запускает приложение в режиме разработки.\
+В браузере откроется страница по адресу [http://localhost:3000 ](http://localhost:3000 ).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Страница перезагрузится, если вы внесете изменения.\
+Вы также увидите любые ошибки  в консоли.
 
 ### `npm test`
 
