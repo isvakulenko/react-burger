@@ -4,7 +4,7 @@
 }
 .content {
   overflow-y: scroll;
-  max-height: 750px;
+  max-height: 75vh;
 }
 .type {
   overflow-x: hidden;
