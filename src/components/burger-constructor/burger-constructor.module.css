@@ -4,6 +4,7 @@
 }
 .content {
   width: 600px;
+  min-height: 200px;
   max-height: 464px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -27,9 +28,4 @@
   gap: 16px;
   box-sizing: border-box;
 }
-.item {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
+
