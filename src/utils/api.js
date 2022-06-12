@@ -9,9 +9,10 @@ const getIngredients = () => {
   return (
     fetch(`${Url}/ingredients`)
       .then(checkResponse)
+      //.then(data => console.log(data))
       // .then(res => {console.log (res)})
       .then((data) => {
-        if (data.success) return data.data;
+        if (data.success) return data;
         return Promise.reject(data);
       })
   );
@@ -19,7 +20,7 @@ const getIngredients = () => {
 // Отправляем данные на сервер.
 //Данные в виде массива с id ингредиентов.
 //В ответ сервер сформирует номер заказа.
-const saveOrder = (idIngredientsArr) => {
+const orderBurgerApi = (idIngredientsArr) => {
   return fetch(`${Url}/orders`, {
     method: "POST",
     headers: {
@@ -28,4 +29,6 @@ const saveOrder = (idIngredientsArr) => {
     body: JSON.stringify({ ingredients: idIngredientsArr }),
   }).then(checkResponse);
 };
-export { getIngredients, saveOrder };
+export { getIngredients, orderBurgerApi };
+
+
