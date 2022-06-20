@@ -1,24 +1,68 @@
-import React, { useState, useContext } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useInView } from "react-intersection-observer";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import IngredientsType from "../ingredients-type/ingredients-type";
 import styles from "./burger-ingredients.module.css";
 import Modal from "../modal/modal";
+import { getItems } from "../../services/actions/ingredient";
 import IngredientInfo from "../ingredient-info/ingredient-info";
-import { BurgerIngredientsContext } from "../../contex/burger-ingredients-context";
+import {
+  SET_INGREDIENT_MODAL,
+  RESET_INGREDIENT_MODAL,
+} from "../../services/actions/ingredient-detail";
 
 const BurgerIngredients = () => {
-  const ingredients = useContext(BurgerIngredientsContext);
+  //const ingredients = useContext(BurgerIngredientsContext);
+  const dispatch = useDispatch();
+  //Вытяним из хранилища
+  const ingredients = useSelector((state) => state.ingredients.items);
 
- // Cтейт для вкладки табов
-  const [current, setCurrent] = React.useState("bun");
+  // При загрузке страницы запросим все ингредиенты с сервера
+  useEffect(() => {
+    dispatch(getItems());
+  }, [dispatch]);
+
+  // ----------------Блок кода для отслеживания состояния табов--------------
+  const [bunRef, inViewBun] = useInView({
+    threshold: 0.1,
+  });
+
+  const [sauceRef, inViewSauce] = useInView({
+    threshold: 0.1,
+  });
+
+  const [mainRef, inViewMain] = useInView({
+    threshold: 0.1,
+  });
+
+  useEffect(() => {
+    if (inViewBun) {
+      setCurrentTab("bun");
+    } else if (inViewSauce) {
+      setCurrentTab("sauce");
+    } else if (inViewMain) {
+      setCurrentTab("main");
+    }
+  }, [inViewBun, inViewSauce, inViewMain]);
+  //---------------------- Конец блока кода для отслежиывния табов------------------
+
+  // Cтейт для вкладки табов
+  const [current, setCurrentTab] = useState("bun");
 
   // Cтейт для модалки с деталями ингредиента
-  const [ingredientInModal, setIngredientInModal] = useState(null);
+  // const [ingredientInModal, setIngredientInModal] = useState(null);
+  const ingredientInModal = useSelector((state) => state.ingredientDetail.info);
+  const onIngredientClick = (ingredient) => {
+    dispatch({ type: SET_INGREDIENT_MODAL, payload: ingredient });
+  };
 
-  const closeIngredientModal = () => setIngredientInModal(null);
+  const closeIngredientModal = () => {
+    dispatch({ type: RESET_INGREDIENT_MODAL });
+  };
 
   const onTabClick = (type) => {
-    setCurrent(type);
+    setCurrentTab(type);
     const tabElement = document.getElementById(type);
     tabElement.scrollIntoView({ behavior: "smooth" });
   };
@@ -49,7 +93,8 @@ const BurgerIngredients = () => {
             title="Булки"
             titleId="buns"
             ingredients={bunsArray}
-            onIngredientClick={setIngredientInModal}
+            onIngredientClick={onIngredientClick}
+            ref={bunRef}
           />
         </div>
         <div id="sauce" className={styles.type}>
@@ -57,7 +102,8 @@ const BurgerIngredients = () => {
             title="Соусы"
             titleId="sauces"
             ingredients={saucesArray}
-            onIngredientClick={setIngredientInModal}
+            onIngredientClick={onIngredientClick}
+            ref={sauceRef}
           />
         </div>
         <div id="main" className={styles.type}>
@@ -65,7 +111,8 @@ const BurgerIngredients = () => {
             title="Начинки"
             titleId="mains"
             ingredients={mainsArray}
-            onIngredientClick={setIngredientInModal}
+            onIngredientClick={onIngredientClick}
+            ref={mainRef}
           />
         </div>
       </div>
@@ -78,6 +125,5 @@ const BurgerIngredients = () => {
     </section>
   );
 };
-
 
 export default BurgerIngredients;
