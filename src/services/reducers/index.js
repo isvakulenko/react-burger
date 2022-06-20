@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-
 import { constructorReducer } from './constructor';
 import { ingredientDetailReducer } from './ingredient-detail';
 import { ingredientReducer } from './ingredient';
