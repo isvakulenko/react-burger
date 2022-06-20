@@ -2,6 +2,10 @@
 
 Stellar Burgers — приложением космической бургерной создано при помощи [Create React App](https://github.com/facebook/create-react-app).
 
+**Github Page**
+
+* [Ссылка на проект на Github Pages](https://isvakulenko.github.io/react-burger/)
+
 ## Доступные скрипты
 
 Находясь в директории проекта, вы можете выполнить следующие команды:
