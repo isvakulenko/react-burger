@@ -15,7 +15,10 @@ export const ingredientDetailReducer = (state = initialState, action) => {
       }
     }
     case RESET_INGREDIENT_MODAL: {
-      return initialState
+      return {
+        ...state,
+        info: null
+      }
     }
     default: {
       return state
