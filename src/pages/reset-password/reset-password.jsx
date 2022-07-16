@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { useDispatch } from 'react-redux';
+import { useCallback, useState } from "react";
+import { Redirect, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { resetPassword } from "../../services/actions/user";
 import {
   Button,
   Input,
@@ -11,18 +13,53 @@ import FormAdditional from "../../components/form/container/form-additional/form
 
 export const ResetPasswordPage = () => {
   const [token, setToken] = useState("");
+  const { user, message } = useSelector((store) => store.user);
   const [password, setPassword] = useState("");
   const [isVisible, setVisible] = useState(false);
   const dispatch = useDispatch();
+  const location = useLocation();
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      dispatch(resetPassword(password, token));
+    },
+    [dispatch, password, token]
+  );
+  if (user) {
+    // Если объект state не является undefined, вернём пользователя назад.
+    return <Redirect to={location.state?.from || "/"} />;
+  }
 
+  //Неавторизованный пользователь не может напрямую попасть
+  // на маршрут /reset-password
+  if (!user) {
+    return (
+      <Redirect
+        to={{
+          pathname: "/forgot-password",
+        }}
+      />
+    );
+  }
 
+  if (message === "Password successfully reset") {
+    return (
+      <Redirect
+        to={{
+          pathname: "/login",
+        }}
+      />
+    );
+  }
   return (
     <main className={styles.main}>
-      <Form className={styles.form} title="Восстановление пароля"
-      name="reset-password"
-      // onSubmit={handleSubmit}
+      <Form
+        className={styles.form}
+        title="Восстановление пароля"
+        name="reset-password"
+        onSubmit={handleSubmit}
       >
-             <InputWrapper margin="mb-6">
+        <InputWrapper margin="mb-6">
           <Input
             name="password"
             placeholder="Введите новый пароль"
@@ -65,7 +102,7 @@ export const ResetPasswordPage = () => {
           linkLabel="Войти"
           margin="mb-4"
         />
-        </Form>
+      </Form>
     </main>
   );
 };
