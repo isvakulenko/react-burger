@@ -30,8 +30,6 @@ const BurgerConstructorComponent = ({ ingredient, index }) => {
       const dragIndex = item.index;
       const hoverIndex = index;
 
-      console.log(dragIndex);
-      console.log(hoverIndex);
       // Don't replace items with themselves
       if (dragIndex === hoverIndex) {
         return;
