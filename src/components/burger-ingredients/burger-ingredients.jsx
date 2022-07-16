@@ -5,7 +5,6 @@ import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import IngredientsType from "../ingredients-type/ingredients-type";
 import styles from "./burger-ingredients.module.css";
 import Modal from "../modal/modal";
-import { getItems } from "../../services/actions/ingredient";
 import IngredientInfo from "../ingredient-info/ingredient-info";
 import {
   SET_INGREDIENT_MODAL,
@@ -17,11 +16,6 @@ const BurgerIngredients = () => {
   const dispatch = useDispatch();
   //Вытяним из хранилища
   const ingredients = useSelector((state) => state.ingredients.items);
-
-  // При загрузке страницы запросим все ингредиенты с сервера
-  useEffect(() => {
-    dispatch(getItems());
-  }, [dispatch]);
 
   // ----------------Блок кода для отслеживания состояния табов--------------
   const [bunRef, inViewBun] = useInView({
