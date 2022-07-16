@@ -1,4 +1,4 @@
-import { getIngredients } from '../../utils/api';
+import { getIngredientsApi } from '../../utils/api';
 
 export const GET_ITEMS_REQUEST = 'GET_ITEMS_REQUEST';
 export const GET_ITEMS_SUCCESS = 'GET_ITEMS_SUCCESS';
@@ -10,7 +10,7 @@ export function getItems() {
     dispatch({
       type: GET_ITEMS_REQUEST
     });
-    getIngredients()
+    getIngredientsApi()
       .then(res => {
         if (res && res.success) {
           dispatch({
