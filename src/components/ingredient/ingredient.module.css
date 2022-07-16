@@ -1,5 +1,5 @@
 .card {
-   display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center; 
   max-width: 272px;
@@ -8,6 +8,8 @@
   align-content: space-between;
   cursor: pointer;
   position: relative;
+  text-decoration: none;
+  color: #f2f2f3;
 }
 
 .cost {
