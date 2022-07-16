@@ -18,7 +18,7 @@ import Modal from "../modal/modal";
 import IngredientInfo from "../ingredient-info/ingredient-info";
 import { getItems } from "../../services/actions/ingredient";
 import { checkAuth } from "../../services/actions/user";
-import { ProtectedRoute } from "../proptected-route/protected-route";
+import { ProtectedRoute } from "../protected-route/protected-route";
 
 function App() {
   const dispatch = useDispatch();
