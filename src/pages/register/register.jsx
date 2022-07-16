@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { Redirect, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../../services/actions/user";
 import {
   Button,
   Input,
@@ -13,12 +16,33 @@ export const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isVisible, setVisible] = useState(false);
+
+  const { user } = useSelector((store) => store.user);
+
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      dispatch(registerUser(email, password, userName));
+    },
+    [dispatch, email, password, userName]
+  );
+  if (user) {
+    // Если объект state не является undefined, вернём пользователя назад.
+    return <Redirect to={"/"} />;
+  }
+
   return (
     <main className={styles.main}>
-      <Form className={styles.form} title="Регистрация" name="register"
-      // onSubmit={handleSubmit}
+      <Form
+        className={styles.form}
+        title="Регистрация"
+        name="register"
+        onSubmit={handleSubmit}
       >
-      <InputWrapper margin="mb-6">
+        <InputWrapper margin="mb-6">
           <Input
             name="userName"
             type="text"
@@ -73,7 +97,7 @@ export const RegisterPage = () => {
           linkLabel="Войти"
           margin="mb-4"
         />
-        </Form>
+      </Form>
     </main>
   );
 };
