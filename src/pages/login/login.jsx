@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { logIn } from '../../services/actions/user';
+import { useCallback, useState } from "react";
+import { Redirect, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logIn } from "../../services/actions/user";
 import {
   Button,
   Input,
@@ -15,8 +16,11 @@ export const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [isVisible, setVisible] = useState(false);
 
+  const { user } = useSelector((store) => store.user);
+
   const dispatch = useDispatch();
- 
+  const location = useLocation();
+
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
@@ -24,11 +28,17 @@ export const LoginPage = () => {
     },
     [dispatch, email, password]
   );
+  //  Если пользователь прошёл авторизацию или уже авторизован и попадает на экран Login,
+  // потребуется просто проверить, есть ли объект state в истории.
+  // И если он есть, отправить пользователя на предыдущий маршрут:
+  if (user) {
+    // Если объект state не является undefined, вернём пользователя назад.
+    return <Redirect to={location.state?.from || "/"} />;
+  }
+
   return (
     <main className={styles.main}>
-      <Form  title="Вход" name="login"
-        onSubmit={handleSubmit}
-       >
+      <Form title="Вход" name="login" onSubmit={handleSubmit}>
         <InputWrapper margin="mb-6">
           <Input
             name="email"
@@ -62,7 +72,7 @@ export const LoginPage = () => {
           }}
           className="mb-20"
         >
-          <Button  type="primary" size="medium">
+          <Button type="primary" size="medium">
             Войти
           </Button>
         </div>
