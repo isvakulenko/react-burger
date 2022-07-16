@@ -12,13 +12,13 @@ import {
   NotFoundPage,
 } from "../../pages";
 import AppHeader from "../app-header/app-header";
-import { getCookie } from "../../utils/cookie";
 //import Loader from "../loader/loader";
 import Modal from "../modal/modal";
 import IngredientInfo from "../ingredient-info/ingredient-info";
 import { getItems } from "../../services/actions/ingredient";
 import { checkAuth } from "../../services/actions/user";
 import { ProtectedRoute } from "../protected-route/protected-route";
+import { closeIngredientModal } from "../../services/actions/ingredient-detail";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +31,7 @@ function App() {
   // и возвращает undefined, если значение перед ?. равно undefined или null.
   const background = location.state?.background;
   //let background = location.state && location.state.background;
+
   // const accessToken = getCookie('accessToken');
   // console.log(`Bearer ${accessToken}`);
   // При загрузке страницы запросим все ингредиенты с сервера
@@ -40,7 +41,12 @@ function App() {
     dispatch(checkAuth());
   }, [dispatch]);
 
-  console.log("isAuthChecked", isAuthChecked);
+  const closeModal = () => {
+    dispatch(closeIngredientModal());
+  };
+
+  // console.log("isAuthChecked", isAuthChecked);
+  // console.log("background", background);
 
   return (
     <>
@@ -83,7 +89,7 @@ function App() {
             <Route
               path="/ingredients/:id"
               exact={true}
-              children={<IngredientInfo ingredientData={ingredientInModal} />}
+              children={<IngredientInfo />}
             />
             {/* Страница профиля*/}
             <ProtectedRoute path="/profile" exact={true}>
@@ -96,12 +102,12 @@ function App() {
           </Switch>
 
           {/* Попап с модальным окном */}
-          {background && (
+          {background && ingredientInModal && (
             <Route
               path="/ingredients/:id"
               children={
-                <Modal>
-                  <IngredientInfo ingredientData={ingredientInModal} />
+                <Modal onClose={closeModal}>
+                  <IngredientInfo />
                 </Modal>
               }
             />
