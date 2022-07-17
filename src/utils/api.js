@@ -1,4 +1,4 @@
-import { getCookie, setCookie } from '../utils/cookie';
+import { getCookie, setCookie } from "../utils/cookie";
 
 //Базовый с которого вытягиваем все данные
 const Url = "https://norma.nomoreparties.space/Api";
@@ -9,6 +9,13 @@ function checkResponse(res) {
   //return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
 }
 
+// Поверяем наличие поля success в ответе сервера
+function checkSuccess(data) {
+  if (data?.success) {
+    return data;
+  }
+  return Promise.reject(data);
+}
 
 // Получаем данные с сервера с разными ингредиентами
 const getIngredientsApi = () => {
@@ -17,10 +24,7 @@ const getIngredientsApi = () => {
       .then(checkResponse)
       //.then(data => console.log(data))
       // .then(res => {console.log (res)})
-      .then((data) => {
-        if (data.success) return data;
-        return Promise.reject(data);
-      })
+      .then(checkSuccess)
   );
 };
 // Отправляем данные на сервер используя fetchWithRefresh.
@@ -31,80 +35,58 @@ const orderBurgerApi = (idIngredientsArr) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
-      Authorization: getCookie('accessToken')
+      Authorization: getCookie("accessToken"),
     },
     body: JSON.stringify({ ingredients: idIngredientsArr }),
-  }).then(data => {
-    if (data?.success){
-    return data
-  };
-return Promise.reject(data)
-})
+  }).then(checkSuccess);
 };
 
 // Создаем нового пользователя
-const createUserApi = ( {email, password, name}) => {
+const createUserApi = ({ email, password, name }) => {
   return fetch(`${Url}/auth/register`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       email,
       password,
-      name
+      name,
     }),
-  }).then(checkResponse)
-  .then(data => {
-    console.log(data);
-    if (data?.success){
-    return data
-  };
-return Promise.reject(data)
   })
+    .then(checkResponse)
+    .then(checkSuccess);
 };
 //Делаем запрос на обновление пароля в случае его утери
-const updatePasswordApi = ({email}) => {
+const updatePasswordApi = ({ email }) => {
   return fetch(`${Url}/password-reset`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email
-        }),
-    }).then(checkResponse)
-    .then(data => {
-      console.log(data);
-      if (data?.success){
-      return data
-    };
-  return Promise.reject(data)
-    })
-  };
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+    }),
+  })
+    .then(checkResponse)
+    .then(checkSuccess);
+};
 
 // Сбрасываем ппароль при получении токена в ответном письме
-const resetPasswordApi = ({password, token}) => {
-    return fetch(`${Url}/password-reset/reset`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          password,
-          token
-          }),
-      }).then(checkResponse)
-      .then(data => {
-        console.log(data);
-        if (data?.success){
-        return data
-      };
-    return Promise.reject(data)
-      })
-    };
-
-
+const resetPasswordApi = ({ password, token }) => {
+  return fetch(`${Url}/password-reset/reset`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      password,
+      token,
+    }),
+  })
+    .then(checkResponse)
+    .then(checkSuccess);
+};
 
 //Функция для входа зарегистрированного пользователя
 const loginRequestApi = ({ email, password }) => {
@@ -119,16 +101,10 @@ const loginRequestApi = ({ email, password }) => {
     redirect: "follow",
     referrerPolicy: "no-referrer",
     body: JSON.stringify({ email, password }),
-  }).then(checkResponse)
-  .then(data => {
-    console.log(data);
-    if (data?.success){
-    return data
-  };
-return Promise.reject(data)
   })
+    .then(checkResponse)
+    .then(checkSuccess);
 };
-
 
 //Функция для выхода зарегистрированного пользователя
 const logOutRequestApi = ({ token }) => {
@@ -143,45 +119,54 @@ const logOutRequestApi = ({ token }) => {
     redirect: "follow",
     referrerPolicy: "no-referrer",
     body: JSON.stringify({ token }),
-  }).then(checkResponse)
-  .then(data => {
-    console.log(data);
-    if (data?.success){
-    return data
-  };
-return Promise.reject(data)
   })
+    .then(checkResponse)
+    .then(checkSuccess);
 };
 
 // Получаем информацию о пользователе
-const getUserRequestApi =  () => {
- return (
- fetch(`${Url}/auth/user`, {
-    method: 'GET',
-    mode: 'cors',
-    cache: 'no-cache',
-    credentials: 'same-origin',
+const getUserRequestApi = () => {
+  return fetch(`${Url}/auth/user`, {
+    method: "GET",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
     headers: {
-      'Content-Type': 'application/json',
-      Authorization: getCookie('accessToken')
+      "Content-Type": "application/json",
+      Authorization: getCookie("accessToken"),
     },
-    redirect: 'follow',
-    referrerPolicy: 'no-referrer'
-  }
-).then(checkResponse)
-  .then(data => {
-    console.log(data);
-    if (data?.success){
-    return data
-  };
-return Promise.reject(data)
+    redirect: "follow",
+    referrerPolicy: "no-referrer",
   })
- )
-}
+    .then(checkResponse)
+    .then(checkSuccess);
+};
 
-//Способ обновления токена. Функция будет автоматически ловить ошибку и в случае недействительности 
+// Обновляем данные о пользователе
+const setUserRequestApi = ( email, password, name) => {
+  return fetch(`${Url}/auth/user`, {
+    method: "PATCH",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: getCookie("accessToken"),
+    },
+    redirect: "follow",
+    referrerPolicy: "no-referrer",
+    body: JSON.stringify({
+      email: email,
+      name: name,
+      password: password
+    }),
+  })
+    .then(checkResponse)
+    .then(checkSuccess);
+};
+
+//Способ обновления токена. Функция будет автоматически ловить ошибку и в случае недействительности
 // accesstoken будет обновлять storage и поля cookie
-
 
 const fetchWithRefresh = async (url, options) => {
   try {
@@ -196,12 +181,10 @@ const fetchWithRefresh = async (url, options) => {
       }
       localStorage.setItem("refreshToken", refreshData.refreshToken);
       setCookie("accessToken", refreshData.accessToken);
-      const res = await fetch(url, {...options,
-      headers:{...options.headers,
-      Authorization: refreshData.accessToken
-    }
-      }
-  );
+      const res = await fetch(url, {
+        ...options,
+        headers: { ...options.headers, Authorization: refreshData.accessToken },
+      });
       const data = await checkResponse(res);
       return data;
     } else {
@@ -212,7 +195,7 @@ const fetchWithRefresh = async (url, options) => {
 
 const refreshToken = () => {
   return fetch(`${Url}/auth/token`, {
-    method: 'POST',
+    method: "POST",
     mode: "cors",
     cache: "no-cache",
     credentials: "same-origin",
@@ -227,12 +210,11 @@ const refreshToken = () => {
   }).then(checkResponse);
 };
 
-
-
 export {
   getIngredientsApi,
   orderBurgerApi,
   getUserRequestApi,
+  setUserRequestApi,
   loginRequestApi,
   logOutRequestApi,
   createUserApi,
