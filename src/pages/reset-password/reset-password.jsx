@@ -13,7 +13,7 @@ import FormAdditional from "../../components/form/container/form-additional/form
 
 export const ResetPasswordPage = () => {
   const [token, setToken] = useState("");
-  const { user, message } = useSelector((store) => store.user);
+  const { user, message, updPasswordRequest } = useSelector((store) => store.user);
   const [password, setPassword] = useState("");
   const [isVisible, setVisible] = useState(false);
   const dispatch = useDispatch();
@@ -32,7 +32,8 @@ export const ResetPasswordPage = () => {
 
   //Неавторизованный пользователь не может напрямую попасть
   // на маршрут /reset-password
-  if (!user) {
+  // Без флага updPasswordRequest переходит в бесконечный цикл с ошибкой
+  if (updPasswordRequest && !user) {
     return (
       <Redirect
         to={{
