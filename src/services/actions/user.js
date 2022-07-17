@@ -88,13 +88,14 @@ export const getUser = () => (dispatch) => {
 
 // ********************************************************
 
-export const setUser = (name, email, password) => (dispatch) => {
+export const setUser = (email, name, password) => (dispatch) => {
   dispatch({
     type: SET_USER_REQUEST,
   });
-  return setUserRequestApi(name, email, password)
+  //console.log('name', name);
+  return setUserRequestApi(email, name, password)
     .then((res) => {
-      console.log(res);
+      //console.log(res);
       dispatch({
         type: SET_USER_SUCCESS,
         payload: res.user,
@@ -103,7 +104,7 @@ export const setUser = (name, email, password) => (dispatch) => {
     .catch((err) => {
       dispatch({
         type: SET_USER_FAILED,
-        payload: err.message,
+        payload: err,
       });
     });
 };
