@@ -4,7 +4,7 @@ Stellar Burgers — приложением космической бургерн
 
 **Github Page**
 
-[Ссылка на проект на Github Pages](https://isvakulenko.github.io/)
+[Ссылка на проект на Github Pages](https://isvakulenko.github.io/react-burger/)
 
 ## Доступные скрипты
 
