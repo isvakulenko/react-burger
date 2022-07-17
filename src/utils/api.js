@@ -143,7 +143,7 @@ const getUserRequestApi = () => {
 };
 
 // Обновляем данные о пользователе
-const setUserRequestApi = ( email, password, name) => {
+const setUserRequestApi = ( email, name, password) => {
   return fetch(`${Url}/auth/user`, {
     method: "PATCH",
     mode: "cors",
