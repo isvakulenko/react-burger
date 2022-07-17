@@ -1,7 +1,16 @@
 import { getCookie, setCookie } from "../utils/cookie";
 
+//********************************************************* */
 //Базовый с которого вытягиваем все данные
 const Url = "https://norma.nomoreparties.space/Api";
+
+//Чтобы подключиться к бэкенду для получения всех заказов
+export const wsUrl = 'wss://norma.nomoreparties.space/orders/all';
+
+//Чтобы получить заказы конкретного пользователя
+const WSS_ORDERS = 'wss://norma.nomoreparties.space/orders';
+
+//********************************************************** */
 
 // Проверяем правильность полученных данных
 function checkResponse(res) {

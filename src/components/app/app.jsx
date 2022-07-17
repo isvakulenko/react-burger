@@ -9,6 +9,7 @@ import {
   ForgotPasswordPage,
   ResetPasswordPage,
   ProfilePage,
+  FeedPage,
   NotFoundPage,
 } from "../../pages";
 import AppHeader from "../app-header/app-header";
@@ -61,9 +62,13 @@ function App() {
             <ProtectedRoute anonymous={true} path="/login">
               <LoginPage />
             </ProtectedRoute>
-            {/* Конструктор */}
+            {/* Конструктор, главная страница */}
             <Route path="/" exact={true}>
               <HomePage />
+            </Route>
+            {/* Лента заказов */}
+            <Route path="/feed" exact={true}>
+              <FeedPage />
             </Route>
             {/* Регистрация */}
             <Route anonymous={true} path="/register" exact={true}>
