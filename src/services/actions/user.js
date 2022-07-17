@@ -1,6 +1,7 @@
 import { getCookie, setCookie, deleteCookie } from "../../utils/cookie";
 import {
   getUserRequestApi,
+  setUserRequestApi,
   loginRequestApi,
   logOutRequestApi,
   createUserApi,
@@ -9,21 +10,31 @@ import {
 } from "../../utils/api";
 
 export const AUTH_CHECKED = "AUTH_CHECKED";
+
 export const GET_USER_REQUEST = "GET_USER_REQUEST";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
 export const GET_USER_FAILED = "GET_USER_FAILED";
+
+export const SET_USER_REQUEST = "SET_USER_REQUEST";
+export const SET_USER_SUCCESS = "SET_USER_SUCCESS";
+export const SET_USER_FAILED = "SET_USER_FAILED";
+
 export const LOGIN_USER_REQUEST = "LOGIN_USER_REQUEST";
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
 export const LOGIN_USER_FAILED = "LOGIN_USER_FAILED";
+
 export const LOGOUT_USER_REQUEST = "LOGOUT_USER_REQUEST";
 export const LOGOUT_USER_SUCCESS = "LOGOUT_USER_SUCCESS";
 export const LOGOUT_USER_FAILED = "LOGOUT_USER_FAILED";
+
 export const ADD_USER_REQUEST = "ADD_USER_REQUEST";
 export const ADD_USER_SUCCESS = "ADD_USER_SUCCESS";
 export const ADD_USER_FAILED = "ADD_USER_FAILED";
+
 export const UPD_PASSWORD_REQUEST = "UPD_PASSWORD_REQUEST";
 export const UPD_PASSWORD_SUCCESS = "UPD_PASSWORD_SUCCESS";
 export const UPD_PASSWORD_FAILED = "UPD_PASSWORD_FAILED";
+
 export const RST_PASSWORD_REQUEST = "RST_PASSWORD_REQUEST";
 export const RST_PASSWORD_SUCCESS = "RST_PASSWORD_SUCCESS";
 export const RST_PASSWORD_FAILED = "RST_PASSWORD_FAILED";
@@ -77,6 +88,26 @@ export const getUser = () => (dispatch) => {
 
 // ********************************************************
 
+export const setUser = (name, email, password) => (dispatch) => {
+  dispatch({
+    type: SET_USER_REQUEST,
+  });
+  return setUserRequestApi(name, email, password)
+    .then((res) => {
+      console.log(res);
+      dispatch({
+        type: SET_USER_SUCCESS,
+        payload: res.user,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: SET_USER_FAILED,
+        payload: err.message,
+      });
+    });
+};
+
 export const logIn = (email, password) => (dispatch) => {
   dispatch({
     type: LOGIN_USER_REQUEST,
@@ -125,7 +156,7 @@ export const registerUser = (email, password, name) => (dispatch) => {
   });
   createUserApi({ email, password, name })
     .then((res) => {
-      console.log("refreshToken", res.refreshToken);
+      //console.log("refreshToken", res.refreshToken);
       localStorage.setItem("refreshToken", res.refreshToken);
       setCookie("accessToken", res.accessToken);
       dispatch({
