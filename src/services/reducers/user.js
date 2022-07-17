@@ -3,6 +3,9 @@ import {
   GET_USER_REQUEST,
   GET_USER_SUCCESS,
   GET_USER_FAILED,
+  SET_USER_REQUEST,
+  SET_USER_SUCCESS,
+  SET_USER_FAILED,
   LOGIN_USER_REQUEST,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAILED,
@@ -26,6 +29,9 @@ const initialState = {
   isAuthChecked: false,
   getUserError: null,
   getUserRequest: false,
+  setUserError: null,
+  setUserRequest: false,
+  isUserChanged: false,
   loginUserRequest: false,
   loginUserError: null,
   logoutUserRequest: false,
@@ -63,6 +69,27 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         getUserError: action.payload,
+      };
+    }
+    case SET_USER_REQUEST: {
+      return {
+        ...state,
+        setUserRequest: true
+      };
+    }
+    case SET_USER_SUCCESS: {
+      return {
+        ...state,
+        setUserRequest: false,
+        isUserChanged: true,
+        user: action.payload,
+      };
+    }
+    case SET_USER_FAILED: {
+      return {
+        ...state,
+        message: action.payload,
+        setUserError: true,
       };
     }
     case LOGIN_USER_REQUEST: {
