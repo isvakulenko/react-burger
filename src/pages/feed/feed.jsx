@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { FeedList } from "../../components/feed-list/feed-list";
 
 import styles from "./feed.module.css";
 
@@ -23,8 +23,10 @@ export const FeedPage = () => {
 <section className={styles.menu}>
       <h1 className= "text text_type_main-large mt-10 mb-5">Лента заказов</h1>
  <div className={styles.content}>
-   {/* <FeedList orders-{orders}/>
-   <FeedStat/> */}
+   <FeedList 
+  //  orders={orders}
+    />
+   {/* <FeedStat/> */}
 
  </div>
  </section>
