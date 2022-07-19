@@ -1,0 +1,25 @@
+.menu {
+  max-width: 320px;
+}
+.menu__list {
+  list-style: none;
+  padding: 0;
+}
+.menu__item {
+  display: block;
+  color: #8585ad;
+  text-decoration: none;
+}
+.menu__item_active {
+  color: #f2f2f3;
+}
+
+.menu__btn {
+  border: none;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.menu__comment {
+  opacity: 0.4;
+}

@@ -1,38 +1,59 @@
-import React from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import {
   BurgerIcon,
   ProfileIcon,
   Logo,
   ListIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-
+import { useSelector } from "react-redux";
 import styles from "./app-header.module.css";
 
 const AppHeader = () => {
+  const { pathname } = useLocation();
+  //console.log(pathname === "/");
+  const { user } = useSelector((store) => store.user);
   return (
     <header className={`${styles.header} pt-4 pb-4`}>
       <nav className={styles.nav}>
         <div className={styles.wrap}>
-          <a href="#" className={`${styles.button} pt-4 pb-4 pl-5 pr-5`}>
-            <BurgerIcon type="primary" />
+          <NavLink
+            to="/"
+            exact={true}
+            className={`${styles.button} pt-4 pb-4 pl-5 pr-5`}
+            activeClassName={styles.button_active}
+          >
+            <BurgerIcon type={pathname === "/" ? "primary" : "secondary"} />
             <p className="text text_type_main-default ml-2">Конструктор</p>
-          </a>
-          <a href="#" className={`${styles.button} pt-4 pb-4 pl-5 pr-5 ml-2`}>
-            <ListIcon type="secondary" />
-            <p className="text text_type_main-default text_color_inactive ml-2">
-              Лента заказов
-            </p>
-          </a>
+          </NavLink>
+          <NavLink
+            to="/feed"
+            exact={true}
+            className={`${styles.button} pt-4 pb-4 pl-5 pr-5 ml-2`}
+            activeClassName={styles.button_active}
+          >
+            <ListIcon type={pathname === "/feed" ? "primary" : "secondary"} />
+            <p className="text text_type_main-default ml-2">Лента заказов</p>
+          </NavLink>
         </div>
         <div className={styles.logo}>
           <Logo />
         </div>
-        <a href="#" className={`${styles.button} pt-4 pb-4 pl-5 pr-5`}>
-          <ProfileIcon type="secondary" />
-          <p className="text text_type_main-default text_color_inactive ml-2">
-            Личный Кабинет
+        <NavLink
+          to="/profile"
+          exact={true}
+          className={`${styles.button} pt-4 pb-4 pl-5 pr-5`}
+          activeClassName={styles.button_active}
+        >
+          <ProfileIcon
+            type={pathname === "/profile" ? "primary" : "secondary"}
+          />
+          <p className="text text_type_main-default ml-2">
+            {
+              (user && user.name) || "Личный кабинет"
+              //можно и так провериить user?.name
+            }
           </p>
-        </a>
+        </NavLink>
       </nav>
     </header>
   );

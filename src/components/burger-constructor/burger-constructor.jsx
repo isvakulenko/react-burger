@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useDrop } from "react-dnd";
+import { useHistory } from "react-router-dom";
 import {
   Button,
   ConstructorElement,
@@ -16,9 +17,10 @@ import { orderBurger, RESET_ORDER } from "../../services/actions/order";
 const BurgerConstructor = () => {
   const dispatch = useDispatch();
   const constructorState = useSelector((state) => state.burgerConstructor);
-
   const orderModalData = useSelector((state) => state.order.data);
   const isOrderRequest = useSelector((state) => state.order.isloading);
+  const { user } = useSelector((store) => store.user);
+  const history = useHistory();
 
   const [, drop] = useDrop({
     accept: "add_ingredient",
@@ -41,13 +43,24 @@ const BurgerConstructor = () => {
     // без булок не отправляем запрос
     if (!constructorState.bun || isOrderRequest) return;
     // отправляем ингредиенты на сервер
-    dispatch(
-      orderBurger(
-        [constructorState.bun._id]
-          .concat(constructorState.ingredients.map((ing) => ing._id))
-          .concat(constructorState.bun._id)
-      )
-    );
+    if (user) {
+      dispatch(
+        orderBurger(
+          [constructorState.bun._id]
+            .concat(constructorState.ingredients.map((ing) => ing._id))
+            .concat(constructorState.bun._id)
+        )
+      );
+    } else {
+      history.replace({
+        pathname: "/login",
+        state: {
+          from: {
+            pathname: "/",
+          },
+        },
+      });
+    }
   };
   const closeOrderDetail = () => dispatch({ type: RESET_ORDER });
 
