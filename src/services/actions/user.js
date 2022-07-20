@@ -50,9 +50,9 @@ export const RST_PASSWORD_FAILED = "RST_PASSWORD_FAILED";
 // Проверка авторизован ли пользователь нужна в т.ч для защиты страниц login,
 // register, forgot-password, reset-password когда пользователь уже авторизован.
 
+
 // Ни . then, ни .catch, а именно .finally
 export const checkAuth = () => (dispatch) => {
-  console.log(getCookie("accessToken"));
   if (getCookie("accessToken")) {
     dispatch(getUser()).finally(() => {
       dispatch({
@@ -92,10 +92,8 @@ export const setUser = (email, name, password) => (dispatch) => {
   dispatch({
     type: SET_USER_REQUEST,
   });
-  //console.log('name', name);
   return setUserRequestApi(email, name, password)
     .then((res) => {
-      //console.log(res);
       dispatch({
         type: SET_USER_SUCCESS,
         payload: res.user,
@@ -115,7 +113,6 @@ export const logIn = (email, password) => (dispatch) => {
   });
   loginRequestApi({ email, password })
     .then((res) => {
-      //console.log("refreshToken", res.refreshToken);
       localStorage.setItem("refreshToken", res.refreshToken);
       setCookie("accessToken", res.accessToken);
       dispatch({
@@ -157,7 +154,6 @@ export const registerUser = (email, password, name) => (dispatch) => {
   });
   createUserApi({ email, password, name })
     .then((res) => {
-      //console.log("refreshToken", res.refreshToken);
       localStorage.setItem("refreshToken", res.refreshToken);
       setCookie("accessToken", res.accessToken);
       dispatch({

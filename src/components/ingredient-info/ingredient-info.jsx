@@ -5,7 +5,6 @@ import styles from "./ingredient-info.module.css";
 
 const IngredientInfo = () => {
   const { id } = useParams();
-  //console.log ("id", id)
   //Вытяним из хранилища ингредиентов
   const ingredients = useSelector((state) => state.ingredients.items);
   // console.log ("ingredients", ingredients)
@@ -63,7 +62,4 @@ const IngredientInfo = () => {
   );
 };
 
-// IngredientInfo.propTypes = {
-//   ingredient: IngredientPropTypes.isRequired,
-// };
 export default IngredientInfo;
