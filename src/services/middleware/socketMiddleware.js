@@ -3,13 +3,13 @@ export const socketMiddleware = (wsUrl, wsActions) => {
     let socket = null;
 
     return next => action => {
-      const { dispatch} = store;
+      const { dispatch } = store;
       const { type, payload } = action;
       const { wsInit, onOpen, onClose, onError, onMessage } = wsActions;
-           if (type === wsInit) {
+      if (type === wsInit) {
         socket = new WebSocket(wsUrl);
       }
-// Если нам нужен персональный список???
+      // Если нам нужен персональный список???
 
       if (socket) {
         socket.onopen = event => {
@@ -32,7 +32,7 @@ export const socketMiddleware = (wsUrl, wsActions) => {
           dispatch({ type: onClose, payload: event });
         };
 
- 
+
       }
 
       next(action);
