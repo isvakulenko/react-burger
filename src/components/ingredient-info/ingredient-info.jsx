@@ -1,4 +1,3 @@
-import { IngredientPropTypes } from "../../utils/prop-types";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import styles from "./ingredient-info.module.css";
@@ -10,7 +9,6 @@ const IngredientInfo = () => {
   // console.log ("ingredients", ingredients)
   //И найдем неодходимый компонент для отображения
   const ingredient = ingredients.find((ingredient) => ingredient._id === id);
-
   // console.log ("ingredient", ingredient);
 
   return (
