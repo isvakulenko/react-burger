@@ -3,9 +3,9 @@
   justify-content: center;
   align-items: center;
 }
-.menu{
-max-width:1240px;
-width: 100%
+.menu {
+  max-width: 1240px;
+  width: 100%;
 }
 .content {
   display: flex;
