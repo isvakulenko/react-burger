@@ -5,15 +5,24 @@ export const socketMiddleware = (wsUrl, wsActions) => {
     return next => action => {
       const { dispatch } = store;
       const { type, payload } = action;
-      const { wsInit, onOpen, onClose, onError, onMessage } = wsActions;
+      const { wsInit, onOpen, onClose, onError, onMessage, wsClose, wsInitWithToken } = wsActions;
       if (type === wsInit) {
         socket = new WebSocket(wsUrl);
+        // console.log ('wsInitOK')
       }
-      // Если нам нужен персональный список???
-
+      if (type === wsClose) {
+        socket.close();
+        // console.log ('socket close')
+      }
+      if (type === wsInitWithToken) {
+        socket = new WebSocket(payload);
+        // console.log ('wsInitwithToken')
+      }
+  
       if (socket) {
         socket.onopen = event => {
           dispatch({ type: onOpen, payload: event });
+          // console.log ('wsInitsuccess')
         };
 
         socket.onerror = event => {

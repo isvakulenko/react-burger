@@ -5,20 +5,29 @@ import {
   WS_CONNECTION_ERROR,
   WS_CONNECTION_CLOSED,
   WS_GET_MESSAGE,
+  WS_CONNECTION_WITH_TOKEN,
 } from "../actions/ws";
 
 const initialState = {
   orders: null,
-  total: '',
-  totalToday: '',
+  total: 0,
+  totalToday: 0,
   wsOpen: false,
   wsRequest: false,
   wsFailed: false
 };
 
-export const userReducer = (state = initialState, action) => {
+export const wsReducer = (state = initialState, action) => {
   switch (action.type) {
     case WS_CONNECTION_START: {
+      return {
+        ...state,
+        wsRequest: true,
+        wsFailed: false,
+        wsOpen: false,
+      };
+    }
+    case WS_CONNECTION_WITH_TOKEN: {
       return {
         ...state,
         wsRequest: true,
@@ -30,8 +39,8 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         orders: null,
-        total: '',
-        totalToday: '',
+        total: 0,
+        totalToday: 0,
         wsOpen: false,
         wsRequest: false,
         wsFailed: false
@@ -65,8 +74,8 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         orders: null,
-        total: '',
-        totalToday: '',
+        total: 0,
+        totalToday: 0,
         wsOpen: false,
         wsRequest: false,
         wsFailed: false

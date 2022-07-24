@@ -4,6 +4,7 @@ export const WS_CONNECTION_SUCCESS = 'WS_CONNECTION_SUCCESS';
 export const WS_CONNECTION_ERROR = 'WS_CONNECTION_ERROR';
 export const WS_CONNECTION_CLOSED = 'WS_CONNECTION_CLOSED';
 export const WS_GET_MESSAGE = 'WS_GET_MESSAGE';
+export const WS_CONNECTION_WITH_TOKEN = 'WS_CONECTION_WITH_TOKEN';
 
 
 export const wsConnectionSuccess = () => {
@@ -25,8 +26,16 @@ export const wsConnectionClosed = () => {
 };
 
 export const wsInit = () => {
+  console.log ('wsInit')
   return {
-    type: WS_CONNECTION_START
+        type: WS_CONNECTION_START
+  };
+};
+export const wsInitWithToken = (url) => {
+  console.log ('wsInitWithToken')
+  return {
+        type: WS_CONNECTION_WITH_TOKEN,
+        payload: url,
   };
 };
 
@@ -42,5 +51,6 @@ export const wsActions = {
   onOpen: WS_CONNECTION_SUCCESS,
   onClose: WS_CONNECTION_CLOSED,
   onError: WS_CONNECTION_ERROR,
-  onMessage: WS_GET_MESSAGE
+  onMessage: WS_GET_MESSAGE,
+  wsInitWithToken: WS_CONNECTION_WITH_TOKEN
 };
