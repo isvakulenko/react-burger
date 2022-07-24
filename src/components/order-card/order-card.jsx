@@ -1,25 +1,20 @@
 import styles from "./order-card.module.css";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useRouteMatch } from "react-router-dom";
+import formatTime from "../../utils/utils";
+
 export const OrderCard = ({ order }) => {
   //Возьмем из объекта заказа необходимые данные
   const { number, name, createdAt, _id } = order;
   const location = useLocation();
+  // Используем значение url для открывания модальных окон в ленте и в истории заказов
+  const {url} = useRouteMatch()
   //Данные по всем ингредиентам
   const ingredients = useSelector((store) => store.ingredients.items);
   //console.log(createdAt)
-  console.log(order);
-  //Для правильного отображения данных как в макете,
-  // их необходимо привести к соответствующему виду
-  // 2022-07-21T18:07:01.492Z
-  // Отформатируем дату
-  // const formatTime = (date) => {
-  // return date.split('T')
-  // };
-  // console.log (formatTime ('2022-07-21T18:07:01.492Z') )
+  //console.log(order);
 
-  // Сегодня, 16:20 i-GMT+3
 
   //Подготовим массив с данными для формирования ленты заказа
   const ingredientsList = order.ingredients.reduce((arrFeed, itemId) =>
@@ -29,7 +24,7 @@ export const OrderCard = ({ order }) => {
       if (ingredient) arrFeed.push(ingredient);
       return arrFeed;
     }, []);
-
+  //Итоговая сумма заказа
   const total = ingredientsList.reduce((sum, current) => {
     return sum + current.price;
   }, 0);
@@ -43,14 +38,16 @@ export const OrderCard = ({ order }) => {
       <Link
         className={styles.list_order_link}
         to={{
-          pathname: `/feed/${_id}`,
-          state: { background: location },
-        }}
+          pathname: `${url}/${_id}`,
+          state: { background: location,
+          from: location.pathname 
+        }
+      }}
       >
         <div className={styles.orderID}>
           <span className="text text_type_main-medium">{`#${number}`}</span>
           <span className="text text_type_main-medium text_color_inactive">
-            {Date.now()}
+            {formatTime(createdAt)}
           </span>
         </div>
         <h2 className={`${styles.order_name} text text_type_main-medium`}>
