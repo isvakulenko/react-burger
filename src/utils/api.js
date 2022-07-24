@@ -8,7 +8,7 @@ const Url = "https://norma.nomoreparties.space/Api";
 export const wsUrl = 'wss://norma.nomoreparties.space/orders/all';
 
 //Чтобы получить заказы конкретного пользователя
-const WSS_ORDERS = 'wss://norma.nomoreparties.space/orders';
+export const wsUrlPersonal = 'wss://norma.nomoreparties.space/orders';
 
 //********************************************************** */
 
