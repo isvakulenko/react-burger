@@ -1,0 +1,36 @@
+.list {
+  display: flex;
+}
+
+.ingredient_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  background: linear-gradient(#801ab2, #4c4cff);
+  width: 64px;
+  height: 64px;
+  position: relative;
+}
+.img {
+  background: #131316;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 100px;
+  width: 60px;
+  height: 60px;
+}
+.ingredient_info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ingredient_name {
+  max-width: 320px;
+  white-space: normal;
+}
+.ingredient_price {
+  display: flex;
+  gap: 9px;
+}

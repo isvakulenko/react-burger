@@ -1,0 +1,15 @@
+.main {
+  display: flex;
+  width: 100%;
+  gap: 60px;
+  min-width: 1280px;
+  padding: 120px 0 0 340px;
+}
+.profile_menu {
+  max-width: 320px;
+  width: 100%;
+}
+.list{
+  width: 100%;
+  max-width: 856PX;
+}
