@@ -10,7 +10,7 @@
   width: 100%;
   background-color: #1c1c21;
   border-radius: 40px;
-  z-index: 2;
+  z-index: 50;
 }
 .button {
   position: absolute;
