@@ -2,7 +2,6 @@ import { useCallback, useState } from "react";
 import { Redirect, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../services/actions/user";
-
 import styles from "./profile-menu.module.css";
 import { NavLink, useHistory } from "react-router-dom";
 
@@ -55,4 +54,4 @@ const ProfileMenu = () => {
   );
 };
 
-export default ProfileMenu;
+ export default ProfileMenu;
