@@ -1,6 +1,6 @@
 // Файл целиком взят из тренажера по теме "Авторизация и роутинг в веб-приложениях"
 
-export function getCookie(name: string): string | undefined{
+export function getCookie(name: string){
   const matches = document.cookie.match(
     new RegExp(
       "(?:^|; )" +

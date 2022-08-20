@@ -14,7 +14,7 @@
   height: 64px;
 }
 .ingredients_list {
-  max-height: 312px;
+  height: 312px;
   list-style-type: none;
   display: flex;
   flex-direction: column;
