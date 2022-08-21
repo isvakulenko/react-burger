@@ -1,4 +1,3 @@
-
 import { Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "../../utils/hooks";
 import { useEffect, useCallback } from "react";
@@ -16,20 +15,25 @@ import {
   NotFoundPage,
 } from "../../pages";
 import AppHeader from "../app-header/app-header";
-//import Loader from "../loader/loader";
 import Modal from "../modal/modal";
 import IngredientInfo from "../ingredient-info/ingredient-info";
 import OrderInfo from "../order-info/order-info";
 import { getItems } from "../../services/actions/ingredient";
 import { checkAuth } from "../../services/actions/user";
 import { ProtectedRoute } from "../protected-route/protected-route";
-
-//import { closeIngredientModal } from "../../services/actions/ingredient-detail";
+// Надо такой Location импортировать, иначе потом возникают проблемы в Switch
+import { Location } from "history"
 
 function App() {
   const dispatch = useDispatch();
   const { isAuthChecked } = useSelector((store) => store.user);
-  const location = useLocation<any>();
+
+ type TLocation = {
+    from: Location;
+    background?: Location;
+    pathname: string;
+}
+  const location = useLocation<TLocation>();
   //Опциональная цепочка ?. останавливает вычисление
   // и возвращает undefined, если значение перед ?. равно undefined или null.
   const background = location?.state?.background;
@@ -51,7 +55,6 @@ function App() {
   //Если открыть попап ингредиента и закрыть его, то в адресной строке так и остаётся id ингредиента.
   // А он должен пропадать. Для этого нужно делать переход назад по истории браузера.
   // Dispatch не подходит.
-
 
   const closeModal = useCallback(
     (path) => {
@@ -118,9 +121,11 @@ function App() {
             <ProtectedRoute path="/profile" exact={true}>
               <ProfilePage />
             </ProtectedRoute>
+             {/* История заказов в профиле*/}
             <ProtectedRoute path="/profile/orders" exact={true}>
               <OrderHistoryPage />
             </ProtectedRoute>
+             {/* Информация о заказе на отдельной странице*/}
             <ProtectedRoute path="/profile/orders/:id" exact={true}>
               <OrderInfoPage userToken />
             </ProtectedRoute>
