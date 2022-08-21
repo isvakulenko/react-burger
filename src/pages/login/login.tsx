@@ -10,6 +10,7 @@ import styles from "./login.module.css";
 import Form from "../../components/form/form";
 import InputWrapper from "../../components/form/container/input-wrappper/input-wrapper";
 import FormAdditional from "../../components/form/container/form-additional/form-additional";
+import { FormEvent } from "react";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -22,7 +23,7 @@ export const LoginPage = () => {
   const location = useLocation<{from: string}>();
 
   const handleSubmit = useCallback(
-    (e) => {
+    (e: FormEvent) => {
       e.preventDefault();
       dispatch(logIn(email, password));
     },

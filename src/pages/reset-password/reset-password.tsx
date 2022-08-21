@@ -10,6 +10,7 @@ import styles from "./reset-password.module.css";
 import Form from "../../components/form/form";
 import InputWrapper from "../../components/form/container/input-wrappper/input-wrapper";
 import FormAdditional from "../../components/form/container/form-additional/form-additional";
+import { FormEvent } from "react";
 
 export const ResetPasswordPage = () => {
   const [token, setToken] = useState("");
@@ -19,7 +20,7 @@ export const ResetPasswordPage = () => {
   const dispatch = useDispatch();
   const location = useLocation<{from: string}>();
   const handleSubmit = useCallback(
-    (e) => {
+    (e: FormEvent) => {
       e.preventDefault();
       dispatch(resetPassword(password, token));
     },

@@ -10,6 +10,7 @@ import styles from "./register.module.css";
 import Form from "../../components/form/form";
 import InputWrapper from "../../components/form/container/input-wrappper/input-wrapper";
 import FormAdditional from "../../components/form/container/form-additional/form-additional";
+import { FormEvent } from "react";
 
 export const RegisterPage = () => {
   const [userName, setUserName] = useState("");
@@ -22,7 +23,7 @@ export const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = useCallback(
-    (e) => {
+    (e: FormEvent) => {
       e.preventDefault();
       dispatch(registerUser(email, password, userName));
     },

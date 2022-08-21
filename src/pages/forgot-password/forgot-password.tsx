@@ -10,6 +10,7 @@ import styles from "./forgot-password.module.css";
 import Form from "../../components/form/form";
 import InputWrapper from "../../components/form/container/input-wrappper/input-wrapper";
 import FormAdditional from "../../components/form/container/form-additional/form-additional";
+import { FormEvent } from "react";
 
 export const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ export const ForgotPasswordPage = () => {
   const dispatch = useDispatch();
   const location = useLocation<{from: string}>();
   const handleSubmit = useCallback(
-    (e) => {
+    (e: FormEvent) => {
       e.preventDefault();
       dispatch(updatePassword(email));
     },
@@ -37,8 +38,6 @@ export const ForgotPasswordPage = () => {
     />
   );
 }
-
-//console.log(email)
   return (
     <main className={styles.main}>
       <Form title="Восстановление пароля" name="forgot-password"

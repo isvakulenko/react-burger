@@ -9,6 +9,7 @@ import styles from "./profile.module.css";
 import Form from "../../components/form/form";
 import InputWrapper from "../../components/form/container/input-wrappper/input-wrapper";
 import ProfileMenu from "../../components/profile-menu/profile-menu";
+import { FormEvent, ChangeEvent } from "react";
 
 export const ProfilePage = () => {
   const [userName, setUserName] = useState("");
@@ -26,7 +27,7 @@ export const ProfilePage = () => {
 
   // Универсальная функция, проверяющая изменения данных в любом поле формы
   // управляет появлением кнопок Сохранить и Отмена
-  const onInputChange = useCallback((e, inputData, setInputData) => {
+  const onInputChange = useCallback((e:ChangeEvent<HTMLInputElement>, inputData: string, setInputData:(data: string) => void) => {
     const updValue = e.target.value;
     if (updValue === inputData) {
       setIsDataChanged(false);
@@ -37,18 +38,18 @@ export const ProfilePage = () => {
   }, []);
 
   const handleSubmit = useCallback(
-    (e) => {
+    (e: FormEvent) => {
       e.preventDefault();
       dispatch(setUser(email, userName, password));
     },
     [dispatch, userName, email, password]
   );
 
-  const handleCancel = useCallback((e) => {
+  const handleCancel = useCallback((e: FormEvent) => {
     e.preventDefault();
     setEmail(user!.email);
     setUserName(user!.name);
-  }, []);
+  }, [user]);
 
   return (
     <section className={styles.main}>
