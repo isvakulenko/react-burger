@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import {
   BurgerIcon,
   ProfileIcon,
@@ -34,9 +34,9 @@ const AppHeader = () => {
             <p className="text text_type_main-default ml-2">Лента заказов</p>
           </NavLink>
         </div>
-        <div className={styles.logo}>
+        <Link to="/" className={styles.logo}>
           <Logo />
-        </div>
+        </Link>
         <NavLink
           to="/profile"
           exact={true}
