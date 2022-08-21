@@ -35,7 +35,7 @@ const IngredientsType = React.forwardRef<HTMLDivElement, TIngredientTypeProps>(
           {title}
         </h2>
         <div className={styles.type} ref={ref}>
-          {ingredients.map((ingredient: TIngredient) => {
+          {ingredients.map((ingredient) => {
             return (
               <Ingredient
                 ingredientData={ingredient}
