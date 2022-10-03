@@ -1,9 +1,8 @@
-<h1 align="center"><a  href="https://isvakulenko.github.io" target="_blank"><img src="https://disk.yandex.ru/i/AgJmmXbEoSKcJQ" width="100%" alt="Логотип Stellar Burgers"></a></h1>
+<a  href="https://isvakulenko.github.io" target="_blank"><img src="https://disk.yandex.ru/i/AgJmmXbEoSKcJQ" width="100%" alt="Логотип Stellar Burgers"></a>
 
-# Яндекс.Практикум, курс "Веб разработчик плюс".
+# <a id="top" />Яндекс.Практикум, курс "Веб разработчик плюс".
 ## Проектная работа  7 - 10 месяц.
-## <a id="top" />Проект Stellar Burgers.
----
+## Проект Stellar Burgers.
 ## Оглавление
 
 - [Описание:](#description)
