@@ -1,50 +1,74 @@
-# Stellar Burgers
+<h1 align="center"><a  href="https://isvakulenko.github.io" target="_blank"><img src="https://disk.yandex.ru/i/AgJmmXbEoSKcJQ" width="100%" alt="Логотип Stellar Burgers"></a></h1>
 
-Stellar Burgers — приложением космической бургерной создано при помощи [Create React App](https://github.com/facebook/create-react-app).
+# Яндекс.Практикум, курс "Веб разработчик плюс".
+## Проектная работа  7 - 10 месяц.
+# Проект Stellar Burgers.
+
+Stellar Burgers — одностраничное приложение (SPA) космической бургерной. Позволяет собрать и заказать бургер с уникальным набором ингредиентов.
+Проект предназначен для настольных компьютеров (разрешение 1280x720 и выше). 
+
+ Cоздано при помощи [Create React App](https://github.com/facebook/create-react-app).
 
 **Github Page**
 
 [Ссылка на проект на Github Pages](https://isvakulenko.github.io/react-burger/)
 
-## Доступные скрипты
+Для выполнения заказа необходимо зарегистрироваться или авторизоваться
+Можно воспользоваться тестовым аккаунтом:
 
-Находясь в директории проекта, вы можете выполнить следующие команды:
+e-mail: test@ya.ru\
+Пароль: 123456
 
-### `npm start`
+## Функционал:
+
+- ингредиенты добавляются в заказ путем перетаскивания (Drag&Drop)
+- Регистрация, авторизация пользователя, восстановление пароля
+- Есть защищенный роутинг
+- Лента заказов приходит WebSocket
+- Хранение токенов в cookie
+- Можно посмотреть историю заказов
+
+## Технологии, использованные при создании:
+
+- React.JS (шаблон CRA)
+- TypeScript
+- Redux + Redux-thunk
+- React Router
+- WebSocket
+- JWT Token
+- React DND
+- Билиотека UI-компонентов [Яндекс.Практикум](https://github.com/yandex-praktikum/react-developer-burger-ui-components)
+
+## Языки:
+
+- HTML
+- CSS
+- JS
+- TypeScript
+
+## Дополнительные компоненты
+
+Для работы с проектом необходимо иметь предустановленные  Git, NodeJS
+
+## Установка проекта:
+
+Перейдите в вашу папку для хранения репозиториев. В командной строке вышего  IDE выполните следующую команду клонирования с GitHub:
+```sh
+`$ git clone git@github.com:isvakulenko/react-burger.git`
+```
+
+Для установки необходимых пакетов выполните:
+```sh
+`$ npm install`
+```
+
+Для запуска проекта на локальном сервере:
+```sh
+`$ npm start`
+```
 
 Запускает приложение в режиме разработки.\
 В браузере откроется страница по адресу [http://localhost:3000 ](http://localhost:3000 ).
 
 Страница перезагрузится, если вы внесете изменения.\
 Вы также увидите любые ошибки  в консоли.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
