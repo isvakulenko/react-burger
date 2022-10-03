@@ -1,4 +1,4 @@
-<h1 align="center"><a  href="https://isvakulenko.github.io" target="_blank"><img src="https://disk.yandex.ru/i/AgJmmXbEoSKcJQ" width="100%" alt="Логотип Stellar Burgers"></a></h1>
+<h1 align="center"><a  href="https://isvakulenko.github.io" target="_blank"><img src="[https://disk.yandex.ru/i/AgJmmXbEoSKcJQ](https://s278vla.storage.yandex.net/rdisk/89dbfef78f8a7081f69a2cf12ee9f63c992137963fc7f087e3bfe9350da0ac5a/633b54d3/8HzQ5BWC3yQ5mjoddmuXdQf-a08On1DQZs5R5p-dqvKIXEAC9TR98xbHxJL4vvJ0DsmM6CR-YVTMqRy__twxBA==?uid=0&filename=stellarburger.PNG&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&fsize=10392&hid=cecc62f002ef8cce6749cf116e302c9f&media_type=image&tknv=v2&etag=0dc20b9a5d692643ff558babfd15f05d&rtoken=5M4uU0GWen33&force_default=no&ycrid=na-b5c50e212fc0aecfc4521b7fcd405705-downloader7h&ts=5ea2813109ac0&s=5cfc7d417f822ccabe72ab241b81cfee6839b541aec8c0b66531e1d3cfce4b16&pb=U2FsdGVkX19r3ihF19E0Jh-6jwYHLCKiMtRadu88KLJy0FTjOSJ7Ri3_NqouuMfIZEQXe27yhe-Babi2iL-w1wF2bcAPsXvKUNNlMGnGneo)" width="100%" alt="Логотип Stellar Burgers"></a></h1>
 
 # Яндекс.Практикум, курс "Веб разработчик плюс".
 ## Проектная работа  7 - 10 месяц.
