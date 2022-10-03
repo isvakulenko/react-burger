@@ -48,7 +48,7 @@ e-mail: test@ya.ru\
 - WebSocket
 - JWT Token
 - React DND
-- Билиотека UI-компонентов [Яндекс.Практикум](https://github.com/yandex-praktikum/react-developer-burger-ui-components)
+- Набор UI-компонентов для курсового проекта [Яндекс.Практикум](https://yandex-praktikum.github.io/react-developer-burger-ui-components/docs/)
 
 ## <a id="lang" />Языки:
 
