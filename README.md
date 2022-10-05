@@ -13,7 +13,7 @@
 - [Дополнительные компоненты:](#add)
 - [Установка проекта:](#install)
 
-<h1 align="center"><img src="[./src/images/home.png](https://github.com/isvakulenko/react-burger/blob/main/src/images/home.PNG)" width="100%" alt="Домашняя страница Stellar Burgers"></h1>
+<h1 align="center"><img src="https://github.com/isvakulenko/react-burger/blob/main/src/images/home.PNG" width="100%" alt="Домашняя страница Stellar Burgers"></h1>
 
 ## <a id="description" />Описание:
 
