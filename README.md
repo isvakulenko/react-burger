@@ -1,4 +1,4 @@
-<a  href="https://isvakulenko.github.io" target="_blank"><img src="https://disk.yandex.ru/i/AgJmmXbEoSKcJQ" width="100%" alt="Логотип Stellar Burgers"></a>
+<h1 align="center"><a  href="https://isvakulenko.github.io" target="_blank"><img src="./src/images/stellarburger.png" width="100%" alt="Логотип Stellar Burgers"></a></h1>
 
 # <a id="top" />Яндекс.Практикум, курс "Веб разработчик плюс".
 ## Проектная работа  7 - 10 месяц.
@@ -12,6 +12,8 @@
 - [Языки:](#lang)
 - [Дополнительные компоненты:](#add)
 - [Установка проекта:](#install)
+
+<h1 align="center"><img src="./src/images/home.png" width="100%" alt="Домашняя страница Stellar Burgers"></h1>
 
 ## <a id="description" />Описание:
 
@@ -27,7 +29,7 @@ Stellar Burgers — одностраничное приложение (SPA) ко
 Для выполнения заказа необходимо зарегистрироваться или авторизоваться.\
 Можно воспользоваться тестовым аккаунтом:
 
-e-mail: test@ya.ru\
+e-mail: tburg@ya.ru\
 Пароль: 123456
 
 ## <a id="func" />Функционал:
@@ -49,6 +51,8 @@ e-mail: test@ya.ru\
 - JWT Token
 - React DND
 - Набор UI-компонентов для курсового проекта [Яндекс.Практикум](https://yandex-praktikum.github.io/react-developer-burger-ui-components/docs/)
+
+<h1 align="center"><img src="./src/images/feed.png" width="100%" alt="Лента заказов"></h1>
 
 ## <a id="lang" />Языки:
 
