@@ -55,5 +55,5 @@
     "@types/react-router-dom": "^5.3.3",
     "gh-pages": "^4.0.0"
   },
-  "homepage": "./"
+  "homepage": "https://isvakulenko.github.io/react-burger/"
 }

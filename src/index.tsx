@@ -8,7 +8,7 @@ import { store } from "./services/store";
 
 ReactDOM.render(
   <React.StrictMode>
-   <BrowserRouter>
+   <BrowserRouter basename='/react-burger'>
       <Provider store={store}>
       <App />
     </Provider>
