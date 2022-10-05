@@ -1,4 +1,4 @@
-<h1 align="center"><a  href="https://isvakulenko.github.io" target="_blank"><img src="./src/images/stellarburger.png" width="100%" alt="Логотип Stellar Burgers"></a></h1>
+<h1 align="center"><a  href="https://isvakulenko.github.io" target="_blank"><img src="https://github.com/isvakulenko/react-burger/blob/main/src/images/stellarburger.PNG" width="100%" alt="Логотип Stellar Burgers"></a></h1>
 
 # <a id="top" />Яндекс.Практикум, курс "Веб разработчик плюс".
 ## Проектная работа  7 - 10 месяц.
@@ -13,7 +13,7 @@
 - [Дополнительные компоненты:](#add)
 - [Установка проекта:](#install)
 
-<h1 align="center"><img src="./src/images/home.png" width="100%" alt="Домашняя страница Stellar Burgers"></h1>
+<h1 align="center"><img src="https://github.com/isvakulenko/react-burger/blob/main/src/images/home.PNG" width="100%" alt="Домашняя страница Stellar Burgers"></h1>
 
 ## <a id="description" />Описание:
 
@@ -52,7 +52,7 @@ e-mail: tburg@ya.ru\
 - React DND
 - Набор UI-компонентов для курсового проекта [Яндекс.Практикум](https://yandex-praktikum.github.io/react-developer-burger-ui-components/docs/)
 
-<h1 align="center"><img src="./src/images/feed.png" width="100%" alt="Лента заказов"></h1>
+<h1 align="center"><img src="https://github.com/isvakulenko/react-burger/blob/main/src/images/feed.PNG" width="100%" alt="Лента заказов"></h1>
 
 ## <a id="lang" />Языки:
 
