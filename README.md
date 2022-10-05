@@ -1,4 +1,4 @@
-<h1 align="center"><a  href="https://isvakulenko.github.io" target="_blank"><img src="https://github.com/isvakulenko/react-burger/blob/main/src/images/stellarburger.PNG" width="100%" alt="Логотип Stellar Burgers"></a></h1>
+<h1 align="center"><a  href="https://isvakulenko.github.io/react-burger" target="_blank"><img src="https://github.com/isvakulenko/react-burger/blob/main/src/images/stellarburger.PNG" width="100%" alt="Логотип Stellar Burgers"></a></h1>
 
 # <a id="top" />Яндекс.Практикум, курс "Веб разработчик плюс".
 ## Проектная работа  7 - 10 месяц.
